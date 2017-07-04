@@ -84,6 +84,6 @@ my_plot <- ggplot(data=mpg, mapping=aes(x=displ, y=hwy, colour= factor(cyl))
                  
 ######### Task14 ############
 ranked_airline_labels <- avg_goog_weather_delays %>% transmute(carrier, name = factor(-row_number(),labels = name))
-                  newdata<- ranked_airline_labels %>% left_join(good_weather_delays)
-                  ggplot(data = newdata, mapping= aes(x= name, y=dep_delay)) + coord_flip() + labs(x= "Average departure delay", title= "Departure delays under ideal weather conditions NYC airports, 2013")
+                  newdata<- ranked_airline_labels %>% inner_join(good_weather_delays)
+                  ggplot(data = newdata, mapping= aes(x= name, y=dep_delay)) + stat_summary() + coord_flip() + labs(x= "", y= "Average departure delay", title= "Departure delays under ideal weather conditions \n NYC airports, 2013")
                   
