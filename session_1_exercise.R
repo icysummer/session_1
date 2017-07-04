@@ -75,7 +75,7 @@ my_plot <- ggplot(data=mpg, mapping=aes(x=displ, y=hwy, colour= factor(cyl))
                   
                   ######### Task13 ############
                   weather2 %>% summarise(min_precip= min(precip, na.rm = TRUE), min_wind = min(wind_speed, narm= TRUE), max_visib = max(visib, na.rm = TRUE))
-                  good_weather_delays <- inner_join(flights2, weather2) %>% filter(precip == 0, wind_speed == 0, visib == 10)
+                  good_weather_delays <- inner_join(flights2, weather2) %>% filter(precip == 0 & wind_speed == 0 & visib == 10)
                   #Joining, by = c("origin", "year", "month", "day", "hour")
                   good_weather_delays %>% group_by(carrier) %>% summarise(a_dep_delay = mean(dep_delay)) %>% arrange(a_dep_delay) %>% left_join(airlines)
                   #Joining, by = "carrier"
